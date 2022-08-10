@@ -13,5 +13,9 @@ export const actionMap = {
     update: (payload: any) => ({
         type: 'UPDATE',
         payload
+    }),
+    getList: (payload: any) => ({
+        type: 'GET',
+        payload
     })
 }
