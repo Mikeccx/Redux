@@ -4,7 +4,11 @@ import Hello from './Components/Hello'
 import {HelloRedux} from './Components/Hello'
 import { Provider } from 'react-redux'
 import store from './store'
+import Api from './dao/api'
 function App() {
+    useEffect(() => {
+        Api.fetchList()
+    }, [])
   return (
     <Provider store={store}>
         <BrowserRouter>

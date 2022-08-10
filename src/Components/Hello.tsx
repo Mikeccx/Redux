@@ -3,6 +3,76 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { createStore } from 'redux'
 import { connect, MapDispatchToProps, MapStateToProps, useSelector, shallowEqual, useDispatch } from 'react-redux'
 import store from '../store/index'
+import { normalize, schema } from 'normalizr'
+const origin = {
+    "id": "123",
+    "author": {
+      "id": "1",
+      "name": "Paul"
+    },
+    "title": "My awesome blog post",
+    "comments": [
+      {
+        "id": "324",
+        "commenter": [
+            {
+                "id": "2",
+                "name": "Nicole"
+            },
+            {
+                "id": '3',
+                "name": "Mike"
+            }
+        ]
+      }
+    ]
+  }
+  let spaces: any = {
+    id: 1,
+    spaces: [{
+        uuid: "PUcHCsa3",
+        owner_uuid: "B9ei3VVV",
+        is_archive: false,
+        title: "示例知识库",
+        description: "",
+        create_time: 1600678192,
+        updated_time: 1600678192,
+        admins: ["B9ei3VVV"],
+        page_count: 12,
+        is_pin: false,
+        is_open_share_page: false,
+        is_sample: true,
+        index: 1
+    },
+    {
+        uuid: "UOcHCsa3",
+        owner_uuid: "B9ei3VVV",
+        is_archive: false,
+        title: "示例知识库",
+        description: "",
+        create_time: 1600678192,
+        updated_time: 1600678192,
+        admins: ["B9ei3VVV"],
+        page_count: 12,
+        is_pin: false,
+        is_open_share_page: false,
+        is_sample: true,
+        index: 2
+    }
+  ]
+};
+const space = new schema.Entity('space', {}, {
+    idAttribute: 'uuid'
+})
+const SpaceSchema = new schema.Entity(
+    'spaces',
+    {
+        spaces: [space]
+    }
+  );
+  const newD = normalize(spaces, SpaceSchema)
+  console.log('originData: ', spaces)
+  console.log('newD: ', newD)
 interface IHelloProps {
     message?: string
     children?: React.ReactNode
