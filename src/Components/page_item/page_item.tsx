@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import {Checkbox} from '@ones-design/core'
 const PageItem = (props: any) => {
     const { selectOp } = props
-    const { title, img, uuid } = props.info
+    const { name, img, uuid } = props.info
     const cb = (e: any) => {
         setCheck(!isChecked)
     }
@@ -20,7 +20,7 @@ const PageItem = (props: any) => {
         <>
             <div className='item-wraper' onClick={() => selectCard()}>
                 <div className='info'>
-                    <span className='title'>{title}</span>
+                    <span className='title'>{name}</span>
                     <img className='avatar' src={img}></img>
                 </div>
                 <div className=''>
