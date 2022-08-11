@@ -3,20 +3,35 @@ import { getList } from '../../dao/selector'
 import { useSelector } from 'react-redux'
 import PageItem from '../page_item/page_item'
 import { Button, Modal, Input } from '@ones-design/core'
-import { useEffect, useState, useMemo } from 'react'
+import { useEffect, useState, useMemo, useCallback } from 'react'
 import { getListThunkAction, delItemThunkAction, addItemThunkAction } from '../../dao/actions'
 import { useAppDispatch } from '../../hooks/useAppDispatch'
-
+import React, { memo } from 'react'
+import { useWhyDidYouUpdate } from '../../hooks/whydiYouUpdate'
 export default function List(props: any) {
     const dispatch = useAppDispatch()
     const [modalVisible, setModalVisible] = useState(false)
     const [addModalVisible, setaddModalVisible] = useState(false)
     const [name, setName] = useState('')
-
+    // const eq = (pre: any, next: any) => {
+    //     console.log('pre', pre)
+    //     console.log('next', next)
+    //     return pre === next
+    // }
     const someThing = useMemo(() => {
         console.log('执行!')
         return modalVisible 
-    }, [])
+    },[])
+    // 自组件
+    const TestSon = React.memo(function TestSon(props: any) {
+        // useWhyDidYouUpdate('TestSon', props)
+        // console.log('props', props?.test)
+        // props?.fn('儿子')
+        // useEffect(()=>{
+        //     props.fn('儿子')
+        // },[])
+        return <span>11</span>
+    })
     // 列表
     const list = useSelector(getList)
 
@@ -56,8 +71,15 @@ export default function List(props: any) {
         dispatch(addItemThunkAction(name))
         setaddModalVisible(false)
     }
+    // const testFn = useCallback(() => {
+    //     console.log('儿子')
+    // }, [])
+    const testFn = (text: string) => {
+        console.log(text)
+    }
     return (
         <>
+            <TestSon/>
             {
                 modalVisible ? 
                 <Modal
