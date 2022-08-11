@@ -24,12 +24,12 @@ import { schema } from "normalizr";
 //         idAttribute: 'uuid'
 //     })
 
-    const space = new schema.Entity('space', {}, {
-        idAttribute: 'uuid'
-    })
-    export   const SpaceSchema = new schema.Entity(
-        'spaces',
-        {
-            spaces: [space]
-        }
-      );
+const space = new schema.Entity('space', {}, {
+idAttribute: 'uuid'
+})
+export   const SpaceSchema = new schema.Entity(
+    'spaces',
+    {
+        spaces: [space]
+    }
+);

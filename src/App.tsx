@@ -1,10 +1,24 @@
-import React, {useState, useEffect} from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
-import Api from './dao/dao'
 import Home from './view/Home/home'
 import './App.css'
+// enum D {
+//     up,
+//     down,
+//     left,
+//     right
+// }
+// console.log('D: ', D)
+// const testEum = (type: any) => {
+//     console.log('enum: ', D.down === type)
+//     switch(type) {
+//         case D.up: console.log('hello, up');break;
+//         case D.right: console.log('hello, down');break;
+//         default: break;
+//     }
+// }
+// testEum(1)
 function App() {
   return (
         <Provider store={store}>

@@ -108,13 +108,14 @@ const Hello: React.FC<IHelloProps> = (props: any) => {
 @withRouter
 class HelloClassC extends React.Component {
     state: Readonly<{}> = {
+        count: 1
     }
     componentDidMount() {
         console.log(1)
         console.log(this.props)
     }
     render(): React.ReactNode {
-        return <span>1</span>
+        return <span></span>
     }
 }
 

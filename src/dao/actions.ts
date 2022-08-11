@@ -1,7 +1,5 @@
 
 import Api from './dao'
-import { normalize } from 'normalizr'
-import { SpaceSchema } from './schema'
 // 主要声明操作内容，没有实现
 export const actionMap = {
     add: (payload: any) => ({
@@ -21,6 +19,7 @@ export const actionMap = {
         payload
     })
 }
+// 包含异步操作的thunkaction
 export const getListThunkAction = (payload?: any) => {
     return function(dispatch: any){
         return Api.fetchList().then((res: any) => {
@@ -41,6 +40,7 @@ export const delItemThunkAction = (payload: string) => {
         })
     }
 }
+
 export const addItemThunkAction = (payload: string) => {
     return function (dispatch: any) {
         return Api.addItem(payload).then((res: any) => {
